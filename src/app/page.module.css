@@ -1,0 +1,9 @@
+.main {
+  padding: 50px;
+  padding: 6rem;
+}
+
+.code {
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
