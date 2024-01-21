@@ -1,18 +1,15 @@
 import styles from './page.module.css'
 import Counter from '@/app/components/Counter'
+import Space from '@/app/components/Space'
+import Control from '@/app/components/Control'
 import { Segment } from 'semantic-ui-react'
 
 export default function Home() {
     return (
         <main className={styles.main}>
             <Segment>
-                <p>
-                    Get started by editing&nbsp;
-                    <code className={styles.code}>src/app/page.js</code>
-                </p>
-            </Segment>
-            <Segment>
-                <Counter />
+                <Space res={5} />
+                <Control />
             </Segment>
         </main>
     )
