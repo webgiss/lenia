@@ -5,13 +5,13 @@ import styles from './Space.module.css'
 import { on_each_space_cell } from '@/lib/lenia/space'
 import { color_getter } from '@/lib/lenia'
 
-const Component = ({ res, space, on_init, iteration, auto_download, prefix, stateId }) => {
-    if (space == null) {
-        on_init()
-        return null
-    }
+const Component = ({ res, space, iteration, auto_download, prefix, stateId }) => {
     const canvasRef = useRef(null)
-    const draw = (context, canvas) => {
+
+    useEffect(() => {
+        const canvas = canvasRef.current
+        const context = canvas.getContext('2d')
+
         const { size } = space
         if (canvas.width !== size * res) {
             canvas.width = size * res
@@ -35,14 +35,7 @@ const Component = ({ res, space, on_init, iteration, auto_download, prefix, stat
             link.download = `${prefix}-${stateId}-${iteration.toString().padStart(5, '0')}.jpg`
             link.click()
         }
-    }
-
-    useEffect(() => {
-        const canvas = canvasRef.current
-        const context = canvas.getContext('2d')
-
-        draw(context, canvas)
-    }, [draw, space])
+    }, [space, auto_download, prefix, iteration, res, stateId])
 
     return <canvas ref={canvasRef} className={styles.Space}></canvas>
 }

@@ -15,10 +15,13 @@ const Container = ({ ...params }) => {
     const prefix = useSelector(space.selectPrefix)
     const stateId = useSelector(space.selectId)
 
+    if (spaceValue == null) {
+        on_init()
+        return null
+    }
 
     return <Component
         space={spaceValue}
-        on_init={on_init}
         iteration={iteration}
         auto_download={auto_download}
         prefix={prefix}
